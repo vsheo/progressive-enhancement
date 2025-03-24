@@ -8,6 +8,39 @@
 		<link href="assets/styles.css" rel="stylesheet">
 		<style>
 			/* Hint: welk layout model is handig om content naast elkaar te zetten? */
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				margin-left: 4em;
+			}
+
+			.content {
+				list-style-type: none;
+				display: flex;
+				flex-direction: row;
+
+				overflow-y: auto;
+				width: 50vw;
+
+				scroll-snap-type: x mandatory;
+
+				li {
+					border: 1px solid red;
+					padding: 2em;
+
+					scroll-snap-align: center;
+
+					p {
+						width: 15em;
+					}
+				}
+			}
+
 		</style>
 		<script type="module">
 			/* Schrijf hier eventueel je client-side JavaScript */
@@ -15,6 +48,16 @@
 	</head>
 	<body>
 		<h1>Carrousel</h1>
+
+		<ul class="content">
+			<li><p>Websites leren bouwen, én praktijkervaring opdoen?</p></li>
+			<li><p>FDND is de enige HBO-opleiding voor Frontend Development in Nederland, in twee jaar stomen wij jou klaar voor het werkveld</p></li>
+			<li><p>Je werkt bij ons aan échte projecten voor échte opdrachtgevers</p></li>
+			<li><p>In het studiomodel werken studenten onder begeleiding van coaches en experts uit het vakgebied aan praktijkgerichte opdrachten</p></li>
+			<li><p>Bij FDND leer je websites bouwen en andere belangrijke skills die jij in de praktijk toe kan passen</p></li>
+			<li><p>Een Associate degree-opleiding is een tweejarige hbo-opleiding op niveau 5</p></li>
+		</ul>
+
 
 		<!-- Content: 
 		
