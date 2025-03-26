@@ -16,7 +16,17 @@
 			}
 
 			body {
-				margin-left: 4em;
+				display: flex;
+                flex-direction: column;
+				align-items: center;
+                justify-content: center;
+			}
+
+			.container {
+				display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
 			}
 
 			.content {
@@ -41,7 +51,15 @@
 				}
 			}
 
-			.counter {
+			.previous {
+				margin-right: 1em;
+			}
+
+			.next {
+				margin-left: 1em;
+			}
+
+			.indicator {
 				display: flex;
                 flex-direction: row;
 
@@ -60,6 +78,7 @@
 			const prev = document.querySelector('.previous')
 			const next = document.querySelector('.next')
 			const snapElements = document.querySelectorAll('.content li')
+			const indicator = document.querySelectorAll('.indicator li')
 
 			// aantal li in de list
 			let listLength = snapElements.length
@@ -77,6 +96,9 @@
 
 				if (snapElements[currentPosition]) {
 					snapElements[currentPosition].scrollIntoView({ behavior: 'smooth' })
+
+					indicator[currentPosition - 1].classList.remove('selected')
+					indicator[currentPosition].classList.add('selected')
 				}
 			});
 
@@ -89,6 +111,9 @@
 
 				if (snapElements[currentPosition]) {
 					snapElements[currentPosition].scrollIntoView({ behavior: 'smooth' })
+
+					indicator[currentPosition + 1].classList.remove('selected')
+					indicator[currentPosition].classList.add('selected')
 				}
 			});
 
@@ -103,22 +128,25 @@
 	<body>
 		<h1>Carrousel</h1>
 
-		<button hidden class="previous">terug</button>
+		<section class="container">
+			<button hidden class="previous">vorige</button>
 
-		<ul class="content">
-			<li class="snap-element"><p>Websites leren bouwen, én praktijkervaring opdoen?</p></li>
-			<li class="snap-element"><p>FDND is de enige HBO-opleiding voor Frontend Development in Nederland, in twee jaar stomen wij jou klaar voor het werkveld</p></li>
-			<li class="snap-element"><p>Je werkt bij ons aan échte projecten voor échte opdrachtgevers</p></li>
-			<li class="snap-element"><p>In het studiomodel werken studenten onder begeleiding van coaches en experts uit het vakgebied aan praktijkgerichte opdrachten</p></li>
-			<li class="snap-element"><p>Bij FDND leer je websites bouwen en andere belangrijke skills die jij in de praktijk toe kan passen</p></li>
-			<li class="snap-element"><p>Een Associate degree-opleiding is een tweejarige hbo-opleiding op niveau 5</p></li>
-		</ul>
+			<ul class="content">
+				<li class="snap-element"><p>Websites leren bouwen, én praktijkervaring opdoen?</p></li>
+				<li class="snap-element"><p>FDND is de enige HBO-opleiding voor Frontend Development in Nederland, in twee jaar stomen wij jou klaar voor het werkveld</p></li>
+				<li class="snap-element"><p>Je werkt bij ons aan échte projecten voor échte opdrachtgevers</p></li>
+				<li class="snap-element"><p>In het studiomodel werken studenten onder begeleiding van coaches en experts uit het vakgebied aan praktijkgerichte opdrachten</p></li>
+				<li class="snap-element"><p>Bij FDND leer je websites bouwen en andere belangrijke skills die jij in de praktijk toe kan passen</p></li>
+				<li class="snap-element"><p>Een Associate degree-opleiding is een tweejarige hbo-opleiding op niveau 5</p></li>
+			</ul>
 
-		<button hidden class="next">volgende</button>
+			<button hidden class="next">volgende</button>
 
-		<ul class="counter">
-			<li></li>
+		</section>
+
+		<ul class="indicator">
 			<li class="selected"></li>
+			<li></li>
 			<li></li>
 			<li></li>
 			<li></li>
