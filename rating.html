@@ -17,50 +17,58 @@
 			/* Hint: met Grid Layout kun je elementen over elkaar heen leggen */
 
 			body {
-				--svg-leeg : url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="%2366E5BF" d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-6.983 3.671 1.334-7.776-5.65-5.507 7.808-1.134 3.492-7.075 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>');
-				--svg-ingekleurd : url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="%2366E5BF" d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>');
+				fieldset {
+					display: flex;
+					flex-direction: row;
+				}
+				
+				@supports (--custom: properties) and (selector(:checked)) {
+					--svg-leeg : url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="%2366E5BF" d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-6.983 3.671 1.334-7.776-5.65-5.507 7.808-1.134 3.492-7.075 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>');
+					--svg-ingekleurd : url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="%2366E5BF" d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>');
+
+					input {
+						display: none;
+					}
+
+					label {
+						background-image: var(--svg-leeg);
+						display: flex;
+						height: 1em;
+						width: 1em;
+
+						font-size: 300%;
+						color: transparent;
+						font-size: none;
+
+						.rating-text {
+							pointer-events: none;
+							user-select: none;
+						}
+
+						&:hover {
+							background-image: var(--svg-ingekleurd);
+						}
+					}
+
+					/* in de fieldset, als de eerste input checked is */
+					/* verander alle voorgaande labels van bachground-image */
+					fieldset:has(input:checked:nth-of-type(1)) > label:nth-of-type(1) {
+						background-image: var(--svg-ingekleurd);
+					}
+					fieldset:has(input:checked:nth-of-type(2)) > label:nth-of-type(-n+2) {
+						background-image: var(--svg-ingekleurd);
+					}
+					fieldset:has(input:checked:nth-of-type(3)) > label:nth-of-type(-n+3) {
+						background-image: var(--svg-ingekleurd);
+					}
+					fieldset:has(input:checked:nth-of-type(4)) > label:nth-of-type(-n+4) {
+						background-image: var(--svg-ingekleurd);
+					}
+					fieldset:has(input:checked:nth-of-type(5)) > label:nth-of-type(-n+5) {
+						background-image: var(--svg-ingekleurd);
+					}
+				}
 			}
-
-			form {
-				display: flex;
-				flex-direction: row;
-			}
-
-			label {
-				background-image: var(--svg-leeg);
-
-				display: block;
-				height: 5em;
-				width: 5em;
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-			}
-
-			input {
-				display: none;
-			}
-
-			input:checked:nth-of-type(1) ~ label:nth-of-type(1) {
-				background-image: var(--svg-ingekleurd);
-			}
-
-			input:checked:nth-of-type(2) ~ label:nth-of-type(-n+2) {
-				background-image: var(--svg-ingekleurd);
-			}
-
-			input:checked:nth-of-type(3) ~ label:nth-of-type(-n+3) {
-				background-image: var(--svg-ingekleurd);
-			}
-
-			input:checked:nth-of-type(4) ~ label:nth-of-type(-n+4) {
-				background-image: var(--svg-ingekleurd);
-			}
-
-			input:checked:nth-of-type(5) ~ label:nth-of-type(-n+5) {
-				background-image: var(--svg-ingekleurd);
-			}
-
 		</style>
 	</head>
 	<body>
@@ -77,6 +85,7 @@
 			</svg>
 		-->
 
+
 		<!-- Waarschijnlijk wil je je rating ooit opslaan, dus heb je een formulier nodig -->
 		<form method="post">
 
@@ -84,23 +93,24 @@
 
 			<!-- Hint: of is dit met één formulierelement te maken? -->
 
-			<input type="radio" name="rating" id="1star">
-			<input type="radio" name="rating" id="2star">
-			<input type="radio" name="rating" id="3star">
-			<input type="radio" name="rating" id="4star">
-			<input type="radio" name="rating" id="5star">
+			<fieldset>
+				<legend>Geef een beoordeling</legend>
 
-			<!-- <label for="1star">&#9733;</label> -->
-			<label for="1star"></label>
+				<input type="radio" name="rating" id="star1">
+				<label for="star1"><span class="rating-text">1 ster</span><span class="ster-zwart" hidden>&#9733;</span></label>
 
-			<label for="2star"></label>
+				<input type="radio" name="rating" id="star2">
+				<label for="star2"><span class="rating-text">2 sterren</span><span class="ster-zwart" hidden>&#9733;</span></label>
 
-			<label for="3star"></label>
+				<input type="radio" name="rating" id="star3">
+				<label for="star3"><span class="rating-text">3 sterren</span><span class="ster-zwart" hidden>&#9733;</span></label>
 
-			<label for="4star"></label>
+				<input type="radio" name="rating" id="star4">
+				<label for="star4"><span class="rating-text">4 sterren</span><span class="ster-zwart" hidden>&#9733;</span></label>
 
-			<label for="5star"></label>
-
+				<input type="radio" name="rating" id="star5">
+				<label for="star5"><span class="rating-text">5 sterren</span><span class="ster-zwart" hidden>&#9733;</span></label>
+			</fieldset>
 		</form>
 
 		<details open>
