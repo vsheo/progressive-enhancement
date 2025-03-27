@@ -60,8 +60,11 @@
 			}
 
 			.indicator {
-				display: flex;
-                flex-direction: row;
+				/* displey flex overschrijft hidden, daarom deze claas die met js toegevoegd wordt. zodat er geen puntjes zijn als js niet werkt */
+				&.layout-row {
+					display: flex;
+					flex-direction: row;
+				}
 
 				li {
 					margin-right: 1em;
@@ -72,13 +75,17 @@
 					opacity: 1;
 				}
 			}
+
+			/* scrollbar width th*/
+			/* https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width */
 		</style>
 		<script type="module">
 			/* Schrijf hier eventueel je client-side JavaScript */
 			const prev = document.querySelector('.previous')
 			const next = document.querySelector('.next')
 			const snapElements = document.querySelectorAll('.content li')
-			const indicator = document.querySelectorAll('.indicator li')
+			const indicator = document.querySelector('.indicator')
+			const indicatorElements = document.querySelectorAll('.indicator li')
 
 			// aantal li in de list
 			let listLength = snapElements.length
@@ -97,8 +104,8 @@
 				if (snapElements[currentPosition]) {
 					snapElements[currentPosition].scrollIntoView({ behavior: 'smooth' })
 
-					indicator[currentPosition - 1].classList.remove('selected')
-					indicator[currentPosition].classList.add('selected')
+					indicatorElements[currentPosition - 1].classList.remove('selected')
+					indicatorElements[currentPosition].classList.add('selected')
 				}
 			});
 
@@ -112,8 +119,8 @@
 				if (snapElements[currentPosition]) {
 					snapElements[currentPosition].scrollIntoView({ behavior: 'smooth' })
 
-					indicator[currentPosition + 1].classList.remove('selected')
-					indicator[currentPosition].classList.add('selected')
+					indicatorElements[currentPosition + 1].classList.remove('selected')
+					indicatorElements[currentPosition].classList.add('selected')
 				}
 			});
 
@@ -123,6 +130,8 @@
 
 			prev.hidden = false
 			next.hidden = false
+			indicator.hidden = false
+			indicator.classList.add('layout-row')
 		</script>
 	</head>
 	<body>
@@ -144,7 +153,7 @@
 
 		</section>
 
-		<ul class="indicator">
+		<ul hidden class="indicator">
 			<li class="selected"></li>
 			<li></li>
 			<li></li>
