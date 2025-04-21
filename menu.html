@@ -15,6 +15,39 @@
 			#menu:target {
 				background-color: yellow;
 			}
+
+			/* open menu zonder css */
+			.bottom-menu {
+				display: none;
+			}
+
+			@supports (selector(:has(#open-menu:checked))) {
+				/* Voor open/close menu buttons */
+				label {
+					display: block;
+				}
+
+				/* Menu zichtbaar maken wanneer checkbox is aangevinkt */
+				body:has(#open-menu:checked) #menu {
+					left: 0;
+					transition: 0.7s ease-in-out;
+				}
+
+				/* Menu standaardpositie en styling */
+				#menu {
+					position: fixed;
+					top: 0;
+					left: -18em;
+					transition: 0.7s ease-in-out;
+					height: 100%;
+				}
+
+				#menu svg {
+					display: block;
+					justify-self: end;
+					margin: 0.5em 0.5em 0 0;
+				}
+			}
 		</style>
 		<script type="module">
 			/* Schrijf hier eventueel je client-side JavaScript */
@@ -35,7 +68,13 @@
 				</video>
 			</details> -->
 
-			<a href="#menu">menu</a>
+			<!-- <a href="#menu">menu</a> -->
+
+			<a class="bottom-menu" href="#menu"><svg width="100" height="40" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" rx="20" ry="20" width="200" height="80" fill="#0A0A3C" /><text x="100" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#4FFFE2">Menu</text></svg></a>
+
+
+			<input type="checkbox" id="open-menu" hidden>
+			<label for="open-menu" hidden><svg width="100" height="40" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" rx="20" ry="20" width="200" height="80" fill="#0A0A3C" /><text x="100" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#4FFFE2">Menu</text></svg></label>
 
 			<!-- Deze tekst kun je gebruiken, zodat de pagina wat langer wordt -->
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum eget elit eu tincidunt. Donec gravida nulla at justo sollicitudin, hendrerit faucibus diam tincidunt. Pellentesque porta neque quis nunc laoreet congue. Sed porttitor nec tellus nec semper. Cras pharetra dictum risus ut sagittis. Aliquam in iaculis arcu. Nulla sit amet diam sit amet mauris placerat laoreet eu vel turpis. Vivamus ac massa ut diam gravida elementum ut nec nulla. Integer vel felis massa. Quisque facilisis enim ornare ultricies mattis. Fusce porta rhoncus ex. Nunc viverra orci at leo fermentum convallis. Morbi sodales, lectus congue aliquam maximus, metus ipsum placerat turpis, vitae venenatis metus erat vel eros. Vestibulum lobortis accumsan elit nec maximus. Vivamus mollis ullamcorper felis, id aliquet tellus volutpat at.</p>
@@ -58,6 +97,7 @@
 
 		<!-- Dit is het menu -->
 		<nav id="menu">
+			<label for="open-menu" hidden><svg viewBox="0 0 32 32" width="32" height="32"><title>Sluiten</title><path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path></svg></label>
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li><a href="faq.html">Veelgestelde vragen</a></li>
@@ -70,13 +110,5 @@
 				<li><a href="file.html">File image upload met preview</a></li>
 			</ul>
 		</nav>
-		
-
-		<!-- Dit is eventueel het 'Sluiten' icoon -->
-		<!-- <svg viewBox="0 0 32 32" width="32" height="32">
-			<title>Sluiten</title>
-			<path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path>
-		</svg> -->
-		
 	</body>
 </html>
