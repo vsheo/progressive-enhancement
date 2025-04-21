@@ -13,44 +13,58 @@
 
 			/* Hint: Hoe ver ga je qua styling? Vraag jezelf dit altijd af */
 
-			/* label {
-				display: flex;
-				align-items: center;
-				background-color: gray;
-				width: 7em;
-				height: 3.5em;
-				border-radius: 30px;
-				cursor: pointer;
 
-				.switch-circle {
-					background-color: white;
-					height: 3em;
-					width: 3em;
-					border-radius: 50%;
-					margin: 0 .5em;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					color: white;
-					font-weight: bold;
-				}
-			}
-
-			#switch:checked ~label {
-				background-color: #5BE1B7;
-				justify-content: end;
-
-				.switch-circle {
-					color: black;
-				}
-			}
 
 			fieldset {
 				display: flex;
-				flex-direction: row-reverse;
-				justify-content: start;
-			} */
+				flex-direction: row;
+				align-items: center;
 
+				.no-css-switch {
+					display: none;
+				}
+
+				#switch {
+					display: none;
+				}
+
+				span {
+					display: block;
+					margin-right: 2em;
+				}
+
+				.enhanced-switch {
+					display: flex;
+					align-items: center;
+					background-color: gray;
+					width: 7em;
+					height: 3.5em;
+					border-radius: 30px;
+					cursor: pointer;
+
+					.switch-circle {
+						background-color: white;
+						height: 3em;
+						width: 3em;
+						border-radius: 50%;
+						margin: 0 .5em;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						color: white;
+						font-weight: bold;
+					}
+				}
+
+				#switch:checked ~label {
+					background-color: #5BE1B7;
+					justify-content: end;
+
+					.switch-circle {
+						color: black;
+					}
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -67,17 +81,12 @@
 		</details> -->
 
 
-
-		<!-- <fieldset>
-			<legend>instellingen</legend>
-			<input type="checkbox" id="switch">
-			<label for="switch"><div class="switch-circle">mute</div></label>
-		</fieldset> -->
-
 		<fieldset>
 			<legend>Instellingen</legend>
-			<label for="switch">mute<div class="switch-circle" hidden></div></label>
+			<label for="switch" class="no-css-switch">Mute:</div></label>
 			<input type="checkbox" id="switch">
+			<span hidden>Mute:</span>
+			<label for="switch" class="enhanced-switch" hidden><div class="switch-circle">aan</div></label>
 		</fieldset>
 		
 	</body>
