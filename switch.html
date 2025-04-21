@@ -13,7 +13,7 @@
 
 			/* Hint: Hoe ver ga je qua styling? Vraag jezelf dit altijd af */
 
-			label {
+			/* label {
 				display: flex;
 				align-items: center;
 				background-color: gray;
@@ -45,6 +45,12 @@
 				}
 			}
 
+			fieldset {
+				display: flex;
+				flex-direction: row-reverse;
+				justify-content: start;
+			} */
+
 		</style>
 	</head>
 	<body>
@@ -53,14 +59,26 @@
 		<!-- Hint: Safari heeft hiervoor iets bedacht, maar is dat al een standaard?
 		     Wat gebeurt er in browsers die dat nog niet ondersteunen? -->
 
-		<details open>
+		<!-- <details open>
 			<summary>Demo video</summary>
 			<video src="assets/switch.mp4" width="119" height="67" controls muted autoplay loop>
 				<a href="assets/switch.mp4">assets/switch.mp4</a>
 			</video>
-		</details>
+		</details> -->
 
-		<input type="checkbox" id="switch" hidden>
-		<label for="switch"><div class="switch-circle">aan</div></label>
+
+
+		<!-- <fieldset>
+			<legend>instellingen</legend>
+			<input type="checkbox" id="switch">
+			<label for="switch"><div class="switch-circle">mute</div></label>
+		</fieldset> -->
+
+		<fieldset>
+			<legend>Instellingen</legend>
+			<label for="switch">mute<div class="switch-circle" hidden></div></label>
+			<input type="checkbox" id="switch">
+		</fieldset>
+		
 	</body>
 </html>
