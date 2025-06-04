@@ -10,9 +10,25 @@
 			/* Schrijf hier gewoon je CSS voor dit component */
 
 			/* Hint: Denk niet te ingewikkeld */
+			.hidden {
+				display: none;
+			}
+
 			form {
 				display: flex;
 				flex-direction: column;
+			}
+
+			label {
+				width: 50em;
+				height: 20em;
+				background-color: #66E5BF;
+				border-radius: 15px;
+				border: 2px solid #050542;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: bold;
 			}
 
 			button {
@@ -32,6 +48,12 @@
 
 			/* Hint: Via JS kun je Custom Properties in CSS aanpassen
 			   https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty */
+
+			   const input = document.querySelector('#input-field')
+			   const label = document.querySelector('label')
+
+			   input.classList.add('hidden')
+			   label.classList.remove('hidden')
 		</script>
 	</head>
 	<body>
@@ -43,7 +65,8 @@
 
 			<!-- Hint: Denk niet te ingewikkeld -->
 			<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#:~:text=For%20example%2C%20a%20file%20picker%20that%20needs%20content%20that%20can%20be%20presented%20as%20an%20image%2C%20including%20both%20standard%20image%20formats%20and%20PDF%20files%2C%20might%20look%20like%20this -->
-			<input type="file" accept="image/*,.pdf" />
+			<input type="file" id="input-field" accept="image/*,.pdf"/>
+			<label class="hidden" for="input-field">Selecteer je afbeelding</label>
 
 			<button type="submit" class="fdnd-button">Uploaden</button>
 
