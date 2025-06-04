@@ -24,7 +24,9 @@
 					display: none;
 				}
 
+				/* span verbergeb met trabnslate */
 				#switch {
+					/* geen tab */
 					display: none;
 				}
 
@@ -39,6 +41,7 @@
 					background-color: gray;
 					width: 7em;
 					height: 3.5em;
+					/* padding ipv height margin van div weg */
 					border-radius: 30px;
 					cursor: pointer;
 
@@ -58,6 +61,7 @@
 
 				#switch:checked ~label {
 					background-color: #5BE1B7;
+					/* calc voor verschuinen */
 					justify-content: end;
 
 					.switch-circle {
@@ -80,10 +84,10 @@
 			</video>
 		</details>
 
-
+<!-- label  -->
 		<fieldset>
 			<legend>Instellingen</legend>
-			<label for="switch" class="no-css-switch">Mute:</div></label>
+			<label for="switch" class="no-css-switch">Mute:</label>
 			<input type="checkbox" id="switch">
 
 			<span hidden>Mute:</span>

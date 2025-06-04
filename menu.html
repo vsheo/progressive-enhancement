@@ -36,6 +36,7 @@
 					color: #97FAE3;
 				}
 
+				/* escape eruit */
 
 
 				#menu {
@@ -77,8 +78,21 @@
 
 				/* Voor open/close menu buttons */
 				label {
-					display: block;
+					display: inline-block;
+					position: relative;
+
+					input {
+						position: absolute;
+						inset: 0;
+						background-color: transparent;
+						appearance: none;
+						margin: 0;
+					}
 				}
+/* 
+				label:has(:focus-visible) {
+					outline: 3px solid blue;
+				} */
 
 				/* Menu en overlay zichtbaar wanneer checkbox aangevinkt is */
 				body:has(#open-menu:checked) {
@@ -97,6 +111,10 @@
 			/* Schrijf hier eventueel je client-side JavaScript */
 
 			/* Hint: dit component kan volledig met CSS, maar met JS kun je 'm enhancen */
+
+			// https://www.toptal.com/developers/keycode
+
+			// escape om uit menu te gaan
 		</script>
 	</head>
 	<body>
@@ -114,11 +132,9 @@
 
 			<!-- <a href="#menu">menu</a> -->
 
-			<a class="bottom-menu" href="#menu"><svg width="100" height="40" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" rx="20" ry="20" width="200" height="80" fill="#0A0A3C" /><text x="100" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#4FFFE2">Menu</text></svg></a>
+			<a class="bottom-menu" href="#menu">menu</a>
 
-
-			<input type="checkbox" id="open-menu" hidden>
-			<label for="open-menu" hidden><svg width="100" height="40" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" rx="20" ry="20" width="200" height="80" fill="#0A0A3C" /><text x="100" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#4FFFE2">Menu</text></svg></label>
+			<label><input type="checkbox" id="open-menu">menu label</label>
 
 			<label class="overlay" for="open-menu"></label>
 			<!-- Deze tekst kun je gebruiken, zodat de pagina wat langer wordt -->

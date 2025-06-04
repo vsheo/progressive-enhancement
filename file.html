@@ -10,6 +10,15 @@
 			/* Schrijf hier gewoon je CSS voor dit component */
 
 			/* Hint: Denk niet te ingewikkeld */
+			form {
+				display: flex;
+				flex-direction: column;
+			}
+
+			button {
+				width: max-content;
+				margin-top: .5em;
+			}
 		</style>
 		<script type="module">
 			/* Schrijf hier eventueel je client-side JavaScript */
@@ -33,16 +42,18 @@
 		<form method="post">
 
 			<!-- Hint: Denk niet te ingewikkeld -->
+			<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#:~:text=For%20example%2C%20a%20file%20picker%20that%20needs%20content%20that%20can%20be%20presented%20as%20an%20image%2C%20including%20both%20standard%20image%20formats%20and%20PDF%20files%2C%20might%20look%20like%20this -->
+			<input type="file" accept="image/*,.pdf" />
 
 			<button type="submit" class="fdnd-button">Uploaden</button>
 
 		</form>
 
-		<details open>
+		<!-- <details open>
 			<summary>Demo video</summary>
 			<video src="assets/file.mp4" width="1496" height="496" controls muted autoplay loop>
 				<a href="assets/file.mp4">assets/file.mp4</a>
 			</video>
-		</details>
+		</details> -->
 	</body>
 </html>
