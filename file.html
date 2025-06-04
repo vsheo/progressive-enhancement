@@ -29,8 +29,6 @@
 				align-items: center;
 				justify-content: center;
 				font-weight: bold;
-				/* background-image: url(var(--upload-image)); */
-				/* background-image: url('assets/studenten.jpg'); */
 			}
 
 			button {
@@ -53,19 +51,20 @@
 
 			   const input = document.querySelector('#input-field')
 			   const label = document.querySelector('label')
-
-			   input.classList.add('hidden')
-			   label.classList.remove('hidden')
 			   
 				// https://stackoverflow.com/questions/72236829/getting-image-from-input-file-and-then-add-it-as-a-background-to-a-div#:~:text=1-,Answer,-Sorted%20by%3A
 			   input.addEventListener('change', (e) => {
 					const file = e.target.files[0];
-					console.log(e.target)
+					// console.log(e.target)
 
 					// https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL_static	
 					let uploadedImage = URL.createObjectURL(file);
 					label.setAttribute('style', `background-image: url('${uploadedImage}')`);
 				})
+
+				// dit onderaan, ingeval er iets mis gaat met JS dan komt de label niet op beeld
+				input.classList.add('hidden')
+				label.classList.remove('hidden')
 		</script>
 	</head>
 	<body>
