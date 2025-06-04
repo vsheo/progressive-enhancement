@@ -29,6 +29,8 @@
 				align-items: center;
 				justify-content: center;
 				font-weight: bold;
+				/* background-image: url(var(--upload-image)); */
+				/* background-image: url('assets/studenten.jpg'); */
 			}
 
 			button {
@@ -54,6 +56,16 @@
 
 			   input.classList.add('hidden')
 			   label.classList.remove('hidden')
+			   
+				// https://stackoverflow.com/questions/72236829/getting-image-from-input-file-and-then-add-it-as-a-background-to-a-div#:~:text=1-,Answer,-Sorted%20by%3A
+			   input.addEventListener('change', (e) => {
+					const file = e.target.files[0];
+					console.log(e.target)
+
+					// https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL_static	
+					let uploadedImage = URL.createObjectURL(file);
+					label.setAttribute('style', `background-image: url('${uploadedImage}')`);
+				})
 		</script>
 	</head>
 	<body>
