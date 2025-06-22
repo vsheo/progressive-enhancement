@@ -1,55 +1,77 @@
 <!doctype html>
 <html lang="nl">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<title>Favorieten picker / Progressive Enhancement / FDND</title>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-		<link href="assets/styles.css" rel="stylesheet">
-		<style>
-			/* Schrijf hier gewoon je CSS voor dit component */
 
-			/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Favorieten picker / Progressive Enhancement / FDND</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+		rel="stylesheet">
+	<link href="assets/styles.css" rel="stylesheet">
+	<style>
+		/* Schrijf hier gewoon je CSS voor dit component */
 
-			/* Hint: Kijk eens naar field-sizing
+		/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
+
+		/* Hint: Kijk eens naar field-sizing
 			   https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing */
-		</style>
-	</head>
 
-	<body>
-		<h1>Favorieten picker</h1>
+		/* kleuren veranderen afhankelijk van select */
+		form:has(select option[value="#A675F5"]:checked) {
+			background-color: #A675F5;
+		}
 
-		<form>
+		form:has(select option[value="#050542"]:checked) {
+			background-color: #050542;
+		}
 
-			<!-- Hint: hoe kun je aan een invoerelement een lijst meegeven? -->
+		form:has(select option[value="#66E5BF"]:checked) {
+			background-color: #66E5BF;
+		}
 
-			<!-- Een lijstje met docenten
-			Charley Muhren
-			Cyd Stumpel
-			Dion Pieters
-			Dorien Drees
-			Joost Faber
-			Justus Sturkenboom
-			Koop Reynders
-			Krijn Hoetmer
-			Sanne 't Hooft
-			Suus ten Voorde
-			-->
+		form:has(select option[value="#FFFC86"]:checked) {
+			background-color: #FFFC86;
+		}
+	</style>
+</head>
 
-			<!-- De kleurcodes van FDND:
-			#A675F5
-			#050542
-			#66E5BF
-			#FFFC86
-			-->
+<body>
+	<h1>Favorieten picker</h1>
 
-		</form>
+	<form>
 
-		<details open>
-			<summary>Demo video</summary>
-			<video src="assets/pickers.mp4" width="749" height="417" controls muted autoplay loop>
-				<a href="assets/pickers.mp4">assets/pickers.mp4</a>
-			</video>
-		</details>
-	</body>
+		<!-- Hint: hoe kun je aan een invoerelement een lijst meegeven? -->
+
+		<label for="docent">Docent:</label>
+		<select id="docenten-lijst">
+			<option value="Charley Muhren">Charley Muhren</option>
+			<option value="Cyd Stumpel">Cyd Stumpel</option>
+			<option value="Dion Pieters">Dion Pieters</option>
+			<option value="Dorien Drees">Dorien Drees</option>
+			<option value="Joost Faber">Joost Faber</option>
+			<option value="Justus Sturkenboom">Justus Sturkenboom</option>
+			<option value="Koop Reynders">Koop Reynders</option>
+			<option value="Krijn Hoetmer">Krijn Hoetmer</option>
+			<option value="Sanne 't Hooft">Sanne 't Hooft</option>
+			<option value="Suus ten Voorde">Suus ten Voorde</option>
+		</select>
+
+		<label for="kleur-opties">Kies een kleur:</label>
+		<select id="kleur-lijst">
+			<option value="#A675F5">Paars</option>
+			<option value="#050542">zwart</option>
+			<option value="#66E5BF">groen</option>
+			<option value="#FFFC86">geel</option>
+		</select>
+
+	</form>
+
+	<details open>
+		<summary>Demo video</summary>
+		<video src="assets/pickers.mp4" width="749" height="417" controls muted autoplay loop>
+			<a href="assets/pickers.mp4">assets/pickers.mp4</a>
+		</video>
+	</details>
+</body>
+
 </html>

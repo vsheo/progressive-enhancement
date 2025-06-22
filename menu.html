@@ -16,6 +16,9 @@
 			/* #menu:target {
 				border: 2px solid red;
 			} */
+			input, svg {
+				cursor: pointer;
+			}
 
 			/* open menu zonder css */
 			.bottom-menu {
@@ -37,7 +40,6 @@
 				}
 
 				/* escape eruit */
-
 
 				#menu {
 					background-color: #030435;
@@ -89,8 +91,8 @@
 						margin: 0;
 					}
 				}
-/* 
-				label:has(:focus-visible) {
+
+				/* label:has(:focus-visible) {
 					outline: 3px solid blue;
 				} */
 
@@ -134,7 +136,7 @@
 
 			<a class="bottom-menu" href="#menu">menu</a>
 
-			<label><input type="checkbox" id="open-menu">menu label</label>
+			<label><input type="checkbox" id="open-menu">open menu label</label>
 
 			<label class="overlay" for="open-menu"></label>
 			<!-- Deze tekst kun je gebruiken, zodat de pagina wat langer wordt -->
